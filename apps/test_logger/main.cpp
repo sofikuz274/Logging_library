@@ -8,9 +8,7 @@
 #include <atomic>
 #include <sstream>
 
-/**
- * @brief Структура для передачи данных между потоками
- */
+ // Структура для передачи данных между потоками
 struct LogMessage {
     std::string text;
     logging::LogLevel level;
@@ -18,9 +16,7 @@ struct LogMessage {
     LogMessage(const std::string& t, logging::LogLevel l) : text(t), level(l) {}
 };
 
-/**
- * @brief Потокобезопасная очередь для сообщений
- */
+ // Потокобезопасная очередь для сообщений
 class ThreadSafeQueue {
 private:
     std::queue<LogMessage> queue_;
@@ -54,9 +50,7 @@ public:
     }
 };
 
-/**
- * @brief Функция рабочего потока для записи логов
- */
+// Функция рабочего потока для записи логов
 void loggerWorker(logging::Logger& logger, ThreadSafeQueue& queue) {
     LogMessage message{"", logging::LogLevel::INFO};
     
@@ -67,9 +61,7 @@ void loggerWorker(logging::Logger& logger, ThreadSafeQueue& queue) {
     }
 }
 
-/**
- * @brief Парсинг уровня логирования из строки
- */
+// Парсинг уровня логирования из строки
 logging::LogLevel parseLogLevel(const std::string& input, bool& hasLevel) {
     hasLevel = false;
     
@@ -111,9 +103,8 @@ logging::LogLevel parseLogLevel(const std::string& input, bool& hasLevel) {
     return logging::LogLevel::INFO;
 }
 
-/**
- * @brief Извлечение текста сообщения после уровня
- */
+
+// Извлечение текста сообщения после уровня
 std::string extractMessage(const std::string& input, bool hasLevel) {
     if (!hasLevel) {
         return input;
@@ -146,9 +137,7 @@ std::string extractMessage(const std::string& input, bool hasLevel) {
     return message.substr(start);
 }
 
-/**
- * @brief Отображение справки по использованию
- */
+// Отображение справки по использованию
 void showUsage(const std::string& programName) {
     std::cout << "Использование: " << programName << " <файл_журнала> [уровень_по_умолчанию]\n\n";
     std::cout << "Параметры:\n";
