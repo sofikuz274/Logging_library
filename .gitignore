@@ -1,0 +1,118 @@
+cat > .gitignore << 'EOF'
+# CMake build files
+build/
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# C++ compiled files
+*.o
+*.obj
+*.so
+*.so.*
+*.a
+*.lib
+*.dll
+*.dylib
+*.exe
+*.out
+a.out
+
+# Временные файлы редакторов
+*~
+*.swp
+*.swo
+.#*
+.DS_Store
+.directory
+Thumbs.db
+
+# Логи (файлы вашего приложения)
+*.log
+logs/
+log/
+application.log
+app.log
+debug.log
+multithreaded.log
+
+# Исполняемые файлы проекта
+test_logger
+log_stats
+run_tests
+
+# Системные файлы Ubuntu/Debian
+*.tmp
+*.temp
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.sublime-*
+.vim/
+.emacs.d/
+
+# Конфигурационные файлы (если будут)
+config.ini
+.env
+.env.local
+*.key
+*.pem
+secrets.txt
+
+# Тестовые данные и вывод
+test_output/
+Testing/
+coverage/
+.coverage
+*.gcov
+*.gcno
+*.gcda
+
+# Архивы и бэкапы
+*.zip
+*.tar
+*.tar.gz
+*.tar.bz2
+*.bak
+*.backup
+*.old
+
+# Debian/Ubuntu пакеты (если будете создавать)
+*.deb
+*.ddeb
+debian/files
+debian/tmp/
+debian/.debhelper/
+
+# Core dumps
+core
+core.*
+*.core
+
+# Valgrind файлы
+*.memcheck
+*.helgrind
+*.cachegrind
+
+# Профилирование
+gmon.out
+*.prof
+
+# Документация (сгенерированная)
+doc/html/
+doc/latex/
+*.dox
+
+# Локальные настройки разработчика
+.local/
+local_config.h
+EOF
+
