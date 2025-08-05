@@ -34,7 +34,7 @@ a.out
 .directory
 Thumbs.db
 
-# Логи (файлы вашего приложения)
+# Логи 
 *.log
 logs/
 log/
@@ -59,7 +59,7 @@ run_tests
 .vim/
 .emacs.d/
 
-# Конфигурационные файлы (если будут)
+# Конфигурационные файлы
 config.ini
 .env
 .env.local
@@ -85,7 +85,7 @@ coverage/
 *.backup
 *.old
 
-# Debian/Ubuntu пакеты (если будете создавать)
+# Debian/Ubuntu пакеты
 *.deb
 *.ddeb
 debian/files
@@ -106,7 +106,7 @@ core.*
 gmon.out
 *.prof
 
-# Документация (сгенерированная)
+# Документация
 doc/html/
 doc/latex/
 *.dox
