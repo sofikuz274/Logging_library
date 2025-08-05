@@ -13,9 +13,7 @@
 #include <cstring>
 #include <iomanip>
 
-/**
- * @brief Структура для хранения статистики
- */
+ // Структура для хранения статистики
 struct LogStatistics {
     // Счетчики сообщений
     size_t totalMessages = 0;
@@ -101,9 +99,7 @@ struct LogStatistics {
     }
 };
 
-/**
- * @brief Парсинг полученного лог-сообщения
- */
+ // Парсинг полученного лог-сообщения
 bool parseLogMessage(const std::string& rawMessage, std::string& message, logging::LogLevel& level) {
     // Ожидаемый формат: [YYYY-MM-DD HH:MM:SS.mmm] [LEVEL] message
     
@@ -134,9 +130,7 @@ bool parseLogMessage(const std::string& rawMessage, std::string& message, loggin
     return true;
 }
 
-/**
- * @brief Создание серверного сокета для прослушивания
- */
+// Создание серверного сокета для прослушивания
 int createServerSocket(const std::string& host, int port) {
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (server_fd < 0) {
@@ -172,9 +166,7 @@ int createServerSocket(const std::string& host, int port) {
     return server_fd;
 }
 
-/**
- * @brief Функция для периодической проверки вывода статистики по таймауту
- */
+// Функция для периодической проверки вывода статистики по таймауту
 void timeoutChecker(LogStatistics& stats, int timeoutSeconds, size_t messagesInterval, 
                    std::atomic<bool>& running) {
     while (running.load()) {
@@ -186,9 +178,7 @@ void timeoutChecker(LogStatistics& stats, int timeoutSeconds, size_t messagesInt
     }
 }
 
-/**
- * @brief Отображение справки по использованию
- */
+// Отображение справки по использованию
 void showUsage(const std::string& programName) {
     std::cout << "Использование: " << programName << " <порт> <N> <T>\n\n";
     std::cout << "Параметры:\n";
