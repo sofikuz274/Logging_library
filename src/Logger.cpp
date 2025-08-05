@@ -141,11 +141,6 @@ namespace logging {
         : output_(std::make_unique<SocketOutput>(host, port)), defaultLevel_(defaultLevel) {
     }
 
-    Logger::Logger(const LoggerConfig& config) 
-        : config_(config), defaultLevel_(config.defaultLevel) {
-        // TODO: Implement enhanced constructors
-    }
-
     Logger::~Logger() {
         stopAsyncWorker();
     }
@@ -215,18 +210,6 @@ namespace logging {
         return config_;
     }
 
-    void Logger::startAsyncWorker() {
-        // TODO: Implement async worker
-    }
-
-    void Logger::stopAsyncWorker() {
-        // TODO: Implement async worker shutdown
-    }
-
-    void Logger::asyncWorkerLoop() {
-        // TODO: Implement async worker loop
-    }
-
     std::string Logger::formatMessage(const std::string& message, LogLevel level) const {
         std::ostringstream oss;
         oss << "[" << getCurrentTime() << "] "
@@ -248,4 +231,4 @@ namespace logging {
         return oss.str();
     }
 
-} // namespace logging
+} 

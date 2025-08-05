@@ -12,28 +12,24 @@
 
 namespace logging {
 
-    /**
-     * @brief Уровни важности логируемых сообщений
-     */
+    
+     // Уровни важности логируемых сообщений
     enum class LogLevel : int {
         DEBUG = 0,    // Отладочные сообщения
         INFO = 1,     // Информационные сообщения
         WARNING = 2   // Предупреждения и ошибки
     };
 
-    /**
-     * @brief Преобразование уровня логирования в строку
-     */
+    
+     // Преобразование уровня логирования в строку
     std::string logLevelToString(LogLevel level);
 
-    /**
-     * @brief Преобразование строки в уровень логирования
-     */
+   
+     // Преобразование строки в уровень логирования
     LogLevel stringToLogLevel(const std::string& levelStr);
 
-    /**
-     * @brief Абстрактный интерфейс для вывода логов
-     */
+    
+     // Абстрактный интерфейс для вывода логов
     class LogOutput {
     public:
         virtual ~LogOutput() = default;
@@ -41,9 +37,8 @@ namespace logging {
         virtual bool isValid() const = 0;
     };
 
-    /**
-     * @brief Вывод логов в файл
-     */
+    
+     // Вывод логов в файл
     class FileOutput : public LogOutput {
     private:
         std::ofstream file_;
@@ -57,9 +52,7 @@ namespace logging {
         bool isValid() const override;
     };
 
-    /**
-     * @brief Вывод логов в сокет (дополнительная функциональность)
-     */
+     // Вывод логов в сокет (дополнительная функциональность)
     class SocketOutput : public LogOutput {
     private:
         int socket_fd_;
@@ -79,9 +72,7 @@ namespace logging {
         void disconnect();
     };
 
-    /**
-     * @brief Comprehensive error codes for logging system
-     */
+     // Comprehensive error codes for logging system
     enum class LoggingError : int {
         SUCCESS = 0,
         FILE_OPEN_FAILED = 1001,
@@ -93,9 +84,7 @@ namespace logging {
         ROTATION_FAILED = 6001
     };
 
-    /**
-     * @brief Configuration structure for logger
-     */
+     // Configuration structure for logger
     struct LoggerConfig {
         LogLevel defaultLevel = LogLevel::INFO;
         bool enableAsync = false;
@@ -109,9 +98,7 @@ namespace logging {
         int maxReconnectAttempts = 10;
     };
 
-    /**
-     * @brief Async logging queue
-     */
+     // Async logging queue
     template<typename T>
     class AsyncQueue {
     private:
@@ -147,9 +134,7 @@ namespace logging {
         }
     };
 
-    /**
-     * @brief Log rotation handler
-     */
+     // Log rotation handler
     class LogRotator {
     private:
         std::string base_filename_;
@@ -163,9 +148,7 @@ namespace logging {
         bool rotate();
     };
 
-    /**
-     * @brief Enhanced socket output with reconnection
-     */
+     // Enhanced socket output with reconnection
     class EnhancedSocketOutput : public LogOutput {
     private:
         int socket_fd_;
@@ -192,9 +175,7 @@ namespace logging {
         bool isValid() const override;
     };
 
-    /**
-     * @brief Enhanced file output with rotation
-     */
+     // Enhanced file output with rotation
     class EnhancedFileOutput : public LogOutput {
     private:
         std::ofstream file_;
@@ -214,9 +195,7 @@ namespace logging {
         bool isValid() const override;
     };
 
-    /**
-     * @brief Основной класс логгера с расширенными функциями
-     */
+     // Основной класс логгера с расширенными функциями
     class Logger {
     private:
         std::unique_ptr<LogOutput> output_;
@@ -276,4 +255,4 @@ namespace logging {
         bool warning(const std::string& message) { return log(message, LogLevel::WARNING); }
     };
 
-} // namespace logging
+} 

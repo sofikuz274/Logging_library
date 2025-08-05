@@ -9,9 +9,8 @@
 #include <chrono>
 #include <functional>
 
-/**
- * @brief Простой фреймворк для тестирования
- */
+
+ // Простой фреймворк для тестирования
 class TestRunner {
 private:
     int totalTests = 0;
@@ -52,17 +51,17 @@ public:
     }
 };
 
-/**
- * @brief Утверждение для тестов
- */
+
+  // Утверждение для тестов
+ 
 #define ASSERT(condition, message) \
     if (!(condition)) { \
         throw std::runtime_error(message); \
     }
 
-/**
- * @brief Чтение содержимого файла
- */
+
+ // Чтение содержимого файла
+
 std::string readFile(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -74,23 +73,23 @@ std::string readFile(const std::string& filename) {
     return ss.str();
 }
 
-/**
- * @brief Подсчет строк в файле
- */
+
+//  Подсчет строк в файле
+
 size_t countLines(const std::string& content) {
     return std::count(content.begin(), content.end(), '\n');
 }
 
-/**
- * @brief Удаление тестового файла
- */
+
+//  Удаление тестового файла
+ 
 void cleanupFile(const std::string& filename) {
     std::filesystem::remove(filename);
 }
 
-/**
- * @brief Тест базовой функциональности логирования
- */
+
+//  Тест базовой функциональности логирования
+
 void testBasicLogging() {
     const std::string testFile = "test_basic.log";
     cleanupFile(testFile);
@@ -113,9 +112,9 @@ void testBasicLogging() {
     cleanupFile(testFile);
 }
 
-/**
- * @brief Тест фильтрации по уровням важности
- */
+
+// Тест фильтрации по уровням важности
+
 void testLogLevelFiltering() {
     const std::string testFile = "test_levels.log";
     cleanupFile(testFile);
@@ -139,9 +138,9 @@ void testLogLevelFiltering() {
     cleanupFile(testFile);
 }
 
-/**
- * @brief Тест изменения уровня важности по умолчанию
- */
+
+  // Тест изменения уровня важности по умолчанию
+
 void testChangeDefaultLevel() {
     const std::string testFile = "test_change_level.log";
     cleanupFile(testFile);
@@ -167,9 +166,9 @@ void testChangeDefaultLevel() {
     cleanupFile(testFile);
 }
 
-/**
- * @brief Тест многопоточной записи
- */
+
+ // Тест многопоточной записи
+ 
 void testMultithreading() {
     const std::string testFile = "test_multithreading.log";
     cleanupFile(testFile);
@@ -207,9 +206,9 @@ void testMultithreading() {
     cleanupFile(testFile);
 }
 
-/**
- * @brief Тест форматирования сообщений
- */
+
+ // Тест форматирования сообщений
+
 void testMessageFormatting() {
     const std::string testFile = "test_formatting.log";
     cleanupFile(testFile);
@@ -231,9 +230,9 @@ void testMessageFormatting() {
     cleanupFile(testFile);
 }
 
-/**
- * @brief Тест преобразования уровней логирования
- */
+
+ // Тест преобразования уровней логирования
+ 
 void testLogLevelConversion() {
     ASSERT(logging::logLevelToString(logging::LogLevel::DEBUG) == "DEBUG", "DEBUG должен преобразовываться в 'DEBUG'");
     ASSERT(logging::logLevelToString(logging::LogLevel::INFO) == "INFO", "INFO должен преобразовываться в 'INFO'");
@@ -245,9 +244,9 @@ void testLogLevelConversion() {
     ASSERT(logging::stringToLogLevel("unknown") == logging::LogLevel::INFO, "Неизвестный уровень должен возвращать INFO");
 }
 
-/**
- * @brief Тест обработки ошибок
- */
+
+// Тест обработки ошибок
+ 
 void testErrorHandling() {
     // Тест с недоступным файлом
     const std::string invalidFile = "/root/inaccessible.log";
@@ -258,9 +257,9 @@ void testErrorHandling() {
     logger.log("This should not crash");
 }
 
-/**
- * @brief Тест логирования пустых и очень больших сообщений
- */
+
+ // Тест логирования пустых и очень больших сообщений
+ 
 void testEdgeCaseMessages() {
     const std::string testFile = "test_edge_cases.log";
     cleanupFile(testFile);
@@ -291,9 +290,9 @@ void testEdgeCaseMessages() {
     cleanupFile(testFile);
 }
 
-/**
- * @brief Тест производительности логирования
- */
+
+ // Тест производительности логирования
+
 void testPerformance() {
     const std::string testFile = "test_performance.log";
     cleanupFile(testFile);
@@ -322,9 +321,9 @@ void testPerformance() {
     cleanupFile(testFile);
 }
 
-/**
- * @brief Тест стрессового многопоточного логирования
- */
+
+  // Тест стрессового многопоточного логирования
+
 void testStressMultithreading() {
     const std::string testFile = "test_stress_threads.log";
     cleanupFile(testFile);
@@ -370,9 +369,9 @@ void testStressMultithreading() {
     cleanupFile(testFile);
 }
 
-/**
- * @brief Тест инициализации логгера с различными параметрами
- */
+
+ // Тест инициализации логгера с различными параметрами
+ 
 void testLoggerInitialization() {
     // Тест с пустым именем файла
     {
@@ -401,9 +400,9 @@ void testLoggerInitialization() {
     }
 }
 
-/**
- * @brief Тест последовательного открытия/закрытия логгера
- */
+
+ // Тест последовательного открытия/закрытия логгера
+
 void testRepeatedOpenClose() {
     const std::string testFile = "test_repeated.log";
     cleanupFile(testFile);
@@ -423,9 +422,9 @@ void testRepeatedOpenClose() {
     cleanupFile(testFile);
 }
 
-/**
- * @brief Тест логирования с различными уровнями важности
- */
+
+ // Тест логирования с различными уровнями важности
+
 void testAllLogLevels() {
     const std::string testFile = "test_all_levels.log";
     cleanupFile(testFile);
@@ -458,9 +457,9 @@ void testAllLogLevels() {
     cleanupFile(testFile);
 }
 
-/**
- * @brief Тест логирования с форматированием времени
- */
+
+ // Тест логирования с форматированием времени
+
 void testTimestampFormatting() {
     const std::string testFile = "test_timestamp.log";
     cleanupFile(testFile);
